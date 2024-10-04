@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble Pop Game</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .bubble {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            background-color: red;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        .game-over {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: red;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<div class="message">Press the key that matches the bubble!</div>
+<div class="game-over">Game Over</div>
+
+<script>
+$(document).ready(function () {
+    var width = screen.width - 100;
+    var height = screen.height - 200;
+    var missedBubbles = 0;  // Track missed bubbles
+
+    // Function to generate a random letter (A-Z)
+    function getRandomLetter() {
+        return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+    }
+
+    // Function to generate a random color
+    function getRandomColor() {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
+    }
+
+    // Function to create and append a bubble
+    function createBubble() {
+        var bubble = $('<div class="bubble"></div>');
+        bubble.text(getRandomLetter()).css({
+            left: Math.random() * width + 'px',
+            top: Math.random() * height + 'px',
+            backgroundColor: getRandomColor()
+        });
+        $('body').append(bubble);
+
+        // Remove bubble after 5 seconds and count as a miss
+        setTimeout(function () {
+            if (bubble.is(':visible')) {
+                missedBubbles++;
+                bubble.remove();
+                checkGameOver();
+            }
+        }, 5000);
+    }
+
+    // Generate a bubble every 2 seconds
+    var bubbleInterval = setInterval(createBubble, 2000);
+
+    // Detect key press and pop the bubble if the letter matches
+    $(document).keydown(function (e) {
+        var keyPressed = String.fromCharCode(e.which);
+        $('.bubble').each(function () {
+            if ($(this).text() === keyPressed) {
+                $(this).remove(); // Remove bubble if the key matches
+            }
+        });
+    });
+
+    // Function to check if the game is over (missed 10 bubbles)
+    function checkGameOver() {
+        if (missedBubbles >= 10) {
+            clearInterval(bubbleInterval); // Stop creating bubbles
+            $('.game-over').fadeIn();  // Show "Game Over" message
+        }
+    }
+});
+</script>
+
+</body>
+</html>
