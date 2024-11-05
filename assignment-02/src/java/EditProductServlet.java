@@ -11,7 +11,7 @@ import jakarta.servlet.http.*;
 
 /**
  *
- * @author CAROLINE
+ * @author BLESSY
  */
 
 public class EditProductServlet extends HttpServlet {
