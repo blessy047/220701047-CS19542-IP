@@ -10,7 +10,7 @@ import jakarta.servlet.http.*;
 
 /**
  *
- * @author CAROLINE
+ * @author BLESSY
  */
 
 public class DeleteProductServlet extends HttpServlet {
