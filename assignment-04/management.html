@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="managementContainer">
+        <h2>Game Management</h2>
+        <div id="settings">
+            <label for="difficulty">Difficulty Level:</label>
+            <select id="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button id="updateSettings">Update Settings</button>
+        </div>
+        
+        <div id="scoreboard">
+            <h3>Scoreboard</h3>
+            <ul id="scoreList"></ul>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="management.js"></script>
+</body>
+</html>

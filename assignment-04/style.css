@@ -1,0 +1,82 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Game Container Styling */
+#gameContainer {
+    text-align: center;
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    height: 90%;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+/* Game Score Display */
+#gameScore {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #0f0; /* Green color for score text */
+}
+
+/* Game Object Styling - Green Dot */
+.game-object {
+    width: 30px;
+    height: 30px;
+    background-color: #0f0; /* Green color for dots */
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover Effect for Game Object */
+.game-object:hover {
+    transform: scale(1.2);
+}
+
+/* Restart Button Styling */
+#restartButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    color: #000;
+    background-color: #0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+#restartButton:hover {
+    background-color: #00d400; /* Slightly brighter green */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #gameScore {
+        font-size: 1.2em;
+    }
+    #restartButton {
+        font-size: 0.9em;
+    }
+}
